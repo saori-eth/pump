@@ -4,8 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
+    "start": "pm2 start index.js --name pump",
+    "restart": "pm2 restart pump",
+    "stop": "pm2 stop pump",
+    "logs": "pm2 logs pump"
   },
   "keywords": [],
   "author": "",
