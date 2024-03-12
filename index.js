@@ -47,22 +47,25 @@ const getLatestMints = async () => {
 const message = (info) => {
   const { symbol, mint, twitter, telegram, website, twitter_username } = info;
   let socialsMessage = [];
-  if (twitter) socialsMessage.push(`Twitter: ${twitter}`);
-  if (telegram) socialsMessage.push(`Telegram: ${telegram}`);
-  if (website) socialsMessage.push(`Website: ${website}`);
+  if (twitter) socialsMessage.push(`[Twitter](${twitter})`);
+  if (telegram) socialsMessage.push(`[Telegram](${telegram})`);
+  if (website) socialsMessage.push(`[Website](${website})`);
 
   const socialsString = socialsMessage.join("\n");
 
   const message = `
-  **${symbol}** token just minted!
-  ${
-    twitter_username
-      ? `Twitter user: https://twitter.com/${twitter_username}`
-      : ""
-  }
-  ${socialsString ? `${socialsString}` : ""}
-  URL: https://pump.fun/${mint}
-  `;
+---
+**${symbol}** token just minted!
+---
+${
+  twitter_username
+    ? `[Deployer Twitter](https://twitter.com/${twitter_username})`
+    : ""
+}
+${socialsString ? `${socialsString}` : ""}
+[Buy](https://pump.fun/${mint})
+---
+`;
 
   console.log(message);
   fetch(DISCORD_WEBHOOK, {
