@@ -1,6 +1,8 @@
 const LATEST_TOKEN_URL = "https://api2.pump.fun/coins/latest";
 const TOKEN_URL = "https://api2.pump.fun/coins/";
 const DISCORD_WEBHOOK =
+  "https://discord.com/api/webhooks/1112248612420845728/MljNggyiyZWYPPf4QNMa4n6HI6fxZR_gMIbHzkc6il4cMY4r0yJs-EqJvN1lL5IT4P9j";
+const DEV_DISCORD_WEBHOOK =
   "https://discord.com/api/webhooks/1111165240537776149/GFqkG1WoPu7q5OJzDz6mKyJZA5BzZ2JXm-Uon6QI1VP5VqhKZ9FJFXM47jyuDKKYbRgA";
 
 let tokenCache = [];
