@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "dev": "node index.js",
     "start": "pm2 start index.js --name pump",
     "restart": "pm2 restart pump",
     "stop": "pm2 stop pump",
