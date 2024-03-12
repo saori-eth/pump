@@ -60,9 +60,9 @@ const message = (info) => {
 ${
   twitter_username
     ? `[Creator: @${twitter_username}](https://twitter.com/${twitter_username})`
-    : ""
+    : "Unknown creator"
 }
-${socialsString ? `${socialsString}` : ""}
+${socialsString ? `${socialsString}` : "No socials"}
 [Buy](https://pump.fun/${mint})
 ---
 `;
