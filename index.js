@@ -59,7 +59,7 @@ const message = (info) => {
 ---
 ${
   twitter_username
-    ? `[Deployer Twitter](https://twitter.com/${twitter_username})`
+    ? `[Deployer: ${twitter_username}](https://twitter.com/${twitter_username})`
     : ""
 }
 ${socialsString ? `${socialsString}` : ""}
