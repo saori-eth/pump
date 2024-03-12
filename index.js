@@ -5,7 +5,7 @@ const DISCORD_WEBHOOK =
 const DEV_DISCORD_WEBHOOK =
   "https://discord.com/api/webhooks/1111165240537776149/GFqkG1WoPu7q5OJzDz6mKyJZA5BzZ2JXm-Uon6QI1VP5VqhKZ9FJFXM47jyuDKKYbRgA";
 
-let tokenCache = [];
+let prevToken = "";
 
 const testInfo = {
   name: "Test Token",
@@ -22,8 +22,8 @@ const getLatestMints = async () => {
     const response = await fetch(LATEST_TOKEN_URL);
     const data = await response.json();
     const { name, symbol, mint, twitter, telegram, website } = data;
-    if (tokenCache.includes(mint)) return console.log("no new mints");
-    tokenCache.push(mint);
+    if (mint === prevToken) return console.log("No new mints");
+    prevToken = mint;
     const mintResponse = await fetch(TOKEN_URL + mint);
     const mintData = await mintResponse.json();
     const { twitter_username } = mintData;
@@ -79,10 +79,4 @@ ${socialsString ? `${socialsString}` : ""}
   });
 };
 
-const clearCache = () => {
-  tokenCache = [];
-  console.log("Cleared token cache");
-};
-
 setInterval(getLatestMints, 5000);
-setInterval(clearCache, 1000 * 60 * 15);
