@@ -27,8 +27,8 @@ const getLatestMints = async () => {
     const mintResponse = await fetch(TOKEN_URL + mint);
     const mintData = await mintResponse.json();
     const { twitter_username } = mintData;
-    if (!twitter_username || !telegram)
-      return console.log(`No socials for ${name} token`);
+    // if (!twitter_username || !telegram)
+    //   return console.log(`No socials for ${name} token`);
     const info = {
       name,
       symbol,
