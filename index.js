@@ -26,7 +26,6 @@ const getLatestMints = async () => {
     prevToken = mint;
     const mintResponse = await fetch(TOKEN_URL + mint);
     const mintData = await mintResponse.json();
-    console.log(mintData);
     const { twitter_username, description, image_uri } = mintData;
     if (!checkDescription(description))
       return console.log(`No social presence for ${name} token`);
