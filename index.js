@@ -26,9 +26,10 @@ const getLatestMints = async () => {
     prevToken = mint;
     const mintResponse = await fetch(TOKEN_URL + mint);
     const mintData = await mintResponse.json();
-    const { twitter_username } = mintData;
-    // if (!twitter_username || !telegram)
-    //   return console.log(`No socials for ${name} token`);
+    console.log(mintData);
+    const { twitter_username, description, image_uri } = mintData;
+    if (!checkDescription(description))
+      return console.log(`No social presence for ${name} token`);
     const info = {
       name,
       symbol,
@@ -37,6 +38,8 @@ const getLatestMints = async () => {
       telegram,
       website,
       twitter_username,
+      description,
+      image_uri,
     };
 
     message(info);
@@ -45,8 +48,25 @@ const getLatestMints = async () => {
   }
 };
 
+const checkDescription = (description) => {
+  const regex = /followers|following|follower|follow|tiktok|instagram/i;
+  return regex.test(description);
+};
+
 const message = (info) => {
-  const { symbol, mint, twitter, telegram, website, twitter_username } = info;
+  const {
+    symbol,
+    mint,
+    twitter,
+    telegram,
+    website,
+    twitter_username,
+    description,
+    image_uri,
+  } = info;
+
+  const image = image_uri ? `![image](${image_uri})` : "";
+
   let socialsMessage = [];
   if (twitter) socialsMessage.push(`[Twitter](${twitter})`);
   if (telegram) socialsMessage.push(`[Telegram](${telegram})`);
@@ -57,6 +77,7 @@ const message = (info) => {
   const message = `
 ---
 **${symbol}** token just minted!
+description: ${description}
 ---
 ${
   twitter_username
