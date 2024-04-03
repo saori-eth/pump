@@ -100,4 +100,4 @@ ${socialsString ? `${socialsString}` : "No socials"}
   });
 };
 
-setInterval(getLatestMints, 5000);
+setInterval(getLatestMints, 1000);
