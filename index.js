@@ -77,6 +77,7 @@ const message = (info) => {
 ---
 **${symbol}** token just minted!
 description: ${description}
+${image}
 ---
 ${
   twitter_username
